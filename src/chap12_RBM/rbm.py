@@ -7,6 +7,8 @@ class RBM:
     """Restricted Boltzmann Machine."""
 
     def __init__(self, n_hidden=2, n_observe=784):
+
+        
         """
         初始化受限玻尔兹曼机（RBM）模型参数
 
@@ -63,10 +65,14 @@ class RBM:
         # pass
     
     def _sigmoid(self, x):
+
+        
         """Sigmoid激活函数，用于将输入映射到概率空间"""
         return 1.0 / (1 + np.exp(-x))
 
     def _sample_binary(self, probs):
+
+        
         """伯努利采样：根据给定概率生成0或1（用于模拟神经元激活）
            伯努利分布是二项分布的一种特殊情况，输出只有两种可能的值（0或1）。
            通过给定的概率值probs，决定每次采样的输出：
@@ -81,6 +87,8 @@ class RBM:
         return np.random.binomial(1, probs)
     
     def train(self, data):
+
+        
         """
         使用 k=1 的 Contrastive Divergence (CD-1) 算法训练 RBM
 
@@ -137,6 +145,8 @@ class RBM:
                 self.b_h += learning_rate * db_h / batch_size                        # 更新隐藏层偏置
 
     def sample(self):
+
+        
         """从训练好的模型中采样生成新数据（Gibbs采样）"""
         # 初始化可见层：使用伯努利分布随机生成二值向量（每个像素有50%概率为1）
         # n_observe是可见层神经元数量（28x28=784）

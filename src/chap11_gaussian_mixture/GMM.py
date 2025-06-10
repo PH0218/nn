@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 
 # 生成混合高斯分布数据
 def generate_data(n_samples=1000):
+
+    
     """生成混合高斯分布数据集
     
     参数:
@@ -71,6 +73,8 @@ def generate_data(n_samples=1000):
 
 # 自定义logsumexp函数
 def logsumexp(log_p, axis=1, keepdims=False):
+
+    
     """优化后的logsumexp实现，包含数值稳定性增强和特殊case处理
     
     计算log(sum(exp(log_p)))，通过减去最大值避免数值溢出
@@ -109,6 +113,8 @@ def logsumexp(log_p, axis=1, keepdims=False):
 
 # 高斯混合模型类
 class GaussianMixtureModel:
+
+    
     """高斯混合模型(GMM)实现
     
     参数:
@@ -118,6 +124,8 @@ class GaussianMixtureModel:
         random_state: int, 随机种子 (可选)
     """
     def __init__(self, n_components=3, max_iter=100, tol=1e-6 tol=1e-6, random_state=None):
+
+    
         # 初始化模型参数
         self.n_components = n_components  # 高斯分布数量
         self.max_iter = max_iter          # EM算法最大迭代次数
@@ -128,6 +136,8 @@ class GaussianMixtureModel:
         self.rng = np.random.default_rng(random_state)
 
     def fit(self, X):
+
+        
         """使用EM算法训练模型
 
         EM算法流程：
@@ -215,6 +225,8 @@ class GaussianMixtureModel:
         return self
 
    def _log_gaussian(self, X, mu, sigma):
+
+       
     """计算多维高斯分布的对数概率密度
     
     参数:
@@ -258,6 +270,8 @@ class GaussianMixtureModel:
         return -0.5 * n_features * np.log(2 * np.pi) - 0.5 * logdet + exponent
     
     def plot_convergence(self):
+
+        
         """可视化对数似然的收敛过程"""
         # 检查是否有对数似然值记录
         if not self.log_likelihoods:

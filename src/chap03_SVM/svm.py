@@ -6,6 +6,8 @@ import numpy as np
 import os  # 新增：用于处理路径
 
 def load_data(fname):
+
+    
     """载入数据。"""
     # 检查文件是否存在，若不存在则给出详细报错
     if not os.path.exists(fname):
@@ -22,6 +24,8 @@ def load_data(fname):
         return np.array(data)          # 返回numpy数组，方便后续数值计算
 
 def eval_acc(label, pred):
+
+    
     """计算准确率。"""
     return np.sum(label == pred) / len(pred)  # 统计预测正确的样本比例
 
@@ -29,6 +33,8 @@ class SVM:
     """SVM模型。"""
 
     def __init__(self):
+
+        
         # 初始化模型参数
         self.learning_rate = 0.01 # 学习率：控制梯度下降中参数更新的步长
         self.reg_lambda = 0.01    # 正则化系数：防止过拟合
@@ -37,6 +43,8 @@ class SVM:
         self.b = None             # 偏置项
 
     def train(self, data_train):
+
+        
         """训练 SVM 模型（基于 hinge loss + L2 正则化）
 
         参数:
@@ -73,6 +81,8 @@ class SVM:
             self.b -= self.learning_rate * db
 
     def predict(self, x):
+
+        
         """预测标签。"""
         score = np.dot(x, self.w) + self.b     # 计算得分
         return np.where(score >= 0, 1, 0)      # 转换回{0, 1}标签
